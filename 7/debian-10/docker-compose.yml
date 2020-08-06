@@ -9,7 +9,10 @@ services:
     volumes:
       - 'mariadb_data:/bitnami'
   jasperreports:
-    image: 'docker.io/bitnami/jasperreports:7-debian-10'
+    #image: 'docker.io/bitnami/jasperreports:7-debian-10'
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - MARIADB_HOST=mariadb
       - MARIADB_PORT_NUMBER=3306
@@ -17,9 +20,10 @@ services:
       - JASPERREPORTS_DATABASE_NAME=bitnami_jasperreports
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - '80:8080'
+      - '8080:8080'
     volumes:
       - 'jasperreports_data:/bitnami'
+      - ./customcfg:/etc/opt/bitnami/jasperreports/config
     depends_on:
       - mariadb
 volumes:
