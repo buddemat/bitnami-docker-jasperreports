@@ -56,7 +56,7 @@ $ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-jasperrepor
 $ docker-compose up -d
 ```
 
-Then you can access your application at http://your-ip/. Enter bitnami default username and password `user/ bitnami`
+Then you can access your application at http://your-ip:8080/. Enter bitnami default username and password `user/ bitnami`
 
 ## Run the application manually
 
