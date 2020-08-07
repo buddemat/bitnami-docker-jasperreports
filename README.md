@@ -85,7 +85,7 @@ If you want to run the application manually instead of using docker-compose, the
 
   ```console
   $ docker volume create --name jasperreports_data
-  $ docker run -d --name jasperreports -p 80:8080 \
+  $ docker run -d --name jasperreports -p 8080:8080 \
     -e ALLOW_EMPTY_PASSWORD=yes \
     -e JASPERREPORTS_DATABASE_USER=bn_jasperreports \
     -e JASPERREPORTS_DATABASE_NAME=bitnami_jasperreports \
@@ -94,7 +94,7 @@ If you want to run the application manually instead of using docker-compose, the
     bitnami/jasperreports:latest
   ```
 
-Then you can access your application at http://your-ip/. Enter bitnami default username and password:
+Then you can access your application at http://your-ip:8080/. Enter bitnami default username and password:
 `user/ bitnami`
 
 >**Note!** If you are using **Docker for Windows** (regardless of running the application using Docker compose or manually) you must check the Docker virtual machine IP executing this command:
@@ -298,6 +298,9 @@ jasperreports:
     -v /your/local/path/bitnami/jasperreports:/bitnami \
     bitnami/jasperreports
 ```
+## "Free" Configuration
+
+To freely overwrite the standard configuration files located in the container in ```/opt/bitnami/jasperreports/WEB-INF``` create a folder named ```customcfg``` and place your custom JasperReports Server configuration files inside (such as ```applicationContext-remote-services.xml```). On ```docker-compose up``` any files in that directory will be copied into the JasperReports Server configuration, overwriting the standard files there, before starting JasperReports Server. 
 
 # Notable Changes
 
